@@ -1,0 +1,233 @@
+---
+const reviews = [
+  {
+    name: 'Marcus T.',
+    role: 'BMW 5-Series Owner',
+    avatar: 'MT',
+    rating: 5,
+    text: "I've tried four detailing shops in the area and PlatinumDetailConcepts is on another level. The paint correction on my M5 removed scratches I thought were permanent. The car looks better than the day I bought it.",
+  },
+  {
+    name: 'Sarah K.',
+    role: 'Audi Q7 Owner',
+    avatar: 'SK',
+    rating: 5,
+    text: "Booked the Premium Detail package for my SUV and I'm absolutely blown away. The interior looks and smells completely new. My kids had done quite a number on those seats — you'd never know now. Worth every penny.",
+  },
+  {
+    name: 'David R.',
+    role: 'Porsche 911 Owner',
+    avatar: 'DR',
+    rating: 5,
+    text: "Had the Ultimate Package done with ceramic coating. The hydrophobic effect is insane — water literally beads off like nothing. Three months in and the car still looks freshly washed every morning. PlatinumDetailConcepts is the real deal.",
+  },
+  {
+    name: 'Jennifer L.',
+    role: 'Tesla Model 3 Owner',
+    avatar: 'JL',
+    rating: 5,
+    text: "Quick, professional, and genuinely passionate about their work. My white Tesla had some pretty bad water spots and swirl marks. After the paint correction it looked showroom-new. Highly recommended!",
+  },
+  {
+    name: 'Carlos M.',
+    role: 'Dodge Challenger Owner',
+    avatar: 'CM',
+    rating: 5,
+    text: "These guys treat your car like it's their own. Every detail was perfect — the wheels, the trim, the glass. I dropped off a dirty muscle car and picked up what felt like a brand-new vehicle. I'll be a regular customer.",
+  },
+  {
+    name: 'Alicia W.',
+    role: 'Mercedes GLE Owner',
+    avatar: 'AW',
+    rating: 5,
+    text: "Fantastic experience from start to finish. They kept me updated throughout the process and the results were stunning. The leather conditioning on my interior is something else — it's buttery smooth and smells incredible.",
+  },
+];
+---
+
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="section-head text-center reveal">
+      <p class="tag" style="justify-content:center">Customer Reviews</p>
+      <h2 class="section-title">What Our <span class="accent">Clients Say</span></h2>
+      <p class="section-desc" style="margin:0 auto">
+        Don't take our word for it — hear from car owners who've experienced the PlatinumDetailConcepts difference.
+      </p>
+    </div>
+
+    <div class="reviews-grid">
+      {reviews.map((r, i) => (
+        <article class={`review-card reveal d${(i % 3) + 1}`}>
+          <div class="stars-row">
+            {"★".repeat(r.rating)}
+          </div>
+          <p class="review-text">"{r.text}"</p>
+          <div class="reviewer">
+            <div class="avatar">{r.avatar}</div>
+            <div>
+              <p class="reviewer-name">{r.name}</p>
+              <p class="reviewer-role">{r.role}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Overall rating strip -->
+    <div class="rating-strip reveal">
+      <div class="rating-overall">
+        <span class="rating-number">5.0</span>
+        <div>
+          <div class="rating-stars">★★★★★</div>
+          <p class="rating-source">Average across all platforms</p>
+        </div>
+      </div>
+      <div class="rating-divider"></div>
+      <div class="platforms">
+        <div class="platform"><span>Google</span><span class="pl-stars">★★★★★</span></div>
+        <div class="platform"><span>Yelp</span><span class="pl-stars">★★★★★</span></div>
+        <div class="platform"><span>Facebook</span><span class="pl-stars">★★★★★</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.testimonials-section {
+  padding: 110px 0;
+  background: var(--bg);
+}
+.text-center { text-align: center; }
+.section-head { margin-bottom: 56px; }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 48px;
+}
+
+.review-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color var(--t), transform var(--t);
+}
+.review-card:hover {
+  border-color: var(--border-a);
+  transform: translateY(-4px);
+}
+
+.stars-row {
+  color: var(--accent);
+  font-size: .95rem;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  font-size: .86rem;
+  color: var(--gray);
+  line-height: 1.8;
+  flex: 1;
+  font-style: italic;
+}
+
+.reviewer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-d), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .75rem;
+  font-weight: 700;
+  color: #000;
+  flex-shrink: 0;
+  font-family: var(--font-h);
+  letter-spacing: .05em;
+}
+
+.reviewer-name {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.reviewer-role {
+  font-size: .72rem;
+  color: var(--gray-d);
+}
+
+/* Rating strip */
+.rating-strip {
+  background: var(--bg-card);
+  border: 1px solid var(--border-a);
+  border-radius: 14px;
+  padding: 26px 36px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.rating-overall {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.rating-number {
+  font-family: var(--font-h);
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+.rating-stars {
+  color: var(--accent);
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+.rating-source {
+  font-size: .72rem;
+  color: var(--gray-d);
+  margin-top: 4px;
+}
+
+.rating-divider {
+  width: 1px;
+  height: 48px;
+  background: var(--border);
+}
+
+.platforms {
+  display: flex;
+  gap: 28px;
+}
+.platform {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: .78rem;
+  color: var(--gray);
+}
+.pl-stars { color: var(--accent); letter-spacing: 1px; }
+
+@media (max-width: 900px) {
+  .reviews-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 580px) {
+  .reviews-grid { grid-template-columns: 1fr; }
+  .rating-strip { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .rating-divider { display: none; }
+}
+</style>

@@ -1,0 +1,239 @@
+---
+const plans = [
+  {
+    name: 'Basic Wash',
+    price: '89',
+    period: 'per session',
+    desc: 'Perfect for regular maintenance and keeping your car fresh.',
+    features: [
+      'Exterior hand wash & dry',
+      'Wheel & tire cleaning',
+      'Window cleaning (exterior)',
+      'Interior vacuum',
+      'Dashboard wipe-down',
+    ],
+    cta: 'Get Started',
+    highlight: false,
+  },
+  {
+    name: 'Premium Detail',
+    price: '199',
+    period: 'per session',
+    desc: 'Our most popular package — a full inside-out transformation.',
+    features: [
+      'Everything in Basic',
+      'Clay bar treatment',
+      'Paint enhancement polish',
+      'Interior deep clean & steam',
+      'Leather conditioning',
+      'Tire dressing & trim restore',
+    ],
+    cta: 'Book Now',
+    highlight: true,
+  },
+  {
+    name: 'Ultimate Package',
+    price: '349',
+    period: 'per session',
+    desc: 'The full treatment with long-term paint protection.',
+    features: [
+      'Everything in Premium',
+      'Multi-stage paint correction',
+      'Ceramic coating (2-year)',
+      'Engine bay cleaning',
+      'Headlight restoration',
+      '6-month protection guarantee',
+    ],
+    cta: 'Get Started',
+    highlight: false,
+  },
+];
+---
+
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-head text-center reveal">
+      <p class="tag" style="justify-content:center">Transparent Pricing</p>
+      <h2 class="section-title">Choose Your <span class="accent">Package</span></h2>
+      <p class="section-desc" style="margin:0 auto">
+        No hidden fees. Every package includes a full inspection and a satisfaction guarantee.
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+      {plans.map((p, i) => (
+        <div class={`plan-card reveal d${i + 1}${p.highlight ? ' popular' : ''}`}>
+          {p.highlight && <div class="popular-badge">Most Popular</div>}
+          <div class="plan-header">
+            <p class="plan-name">{p.name}</p>
+            <div class="plan-price">
+              <span class="currency">$</span>
+              <span class="amount">{p.price}</span>
+            </div>
+            <p class="plan-period">{p.period}</p>
+            <p class="plan-desc">{p.desc}</p>
+          </div>
+          <ul class="plan-features">
+            {p.features.map((f) => (
+              <li>
+                <svg class="check-icon" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="10" r="9" fill={p.highlight ? 'rgba(212,168,67,.15)' : 'rgba(255,255,255,.04)'} stroke={p.highlight ? '#d4a843' : 'rgba(255,255,255,.1)'} stroke-width="1"/>
+                  <path d="M6 10l3 3 5-5" stroke={p.highlight ? '#d4a843' : '#888'} stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="#contact" class={`plan-btn btn ${p.highlight ? 'btn-gold' : 'btn-outline'}`} style="justify-content:center">
+            {p.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <p class="pricing-note reveal">
+      Prices may vary depending on vehicle size and condition.
+      <a href="#contact">Contact us</a> for a custom quote.
+    </p>
+  </div>
+</section>
+
+<style>
+.pricing-section {
+  padding: 110px 0;
+  background: var(--bg);
+}
+
+.section-head {
+  margin-bottom: 60px;
+}
+.text-center { text-align: center; }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.plan-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: transform var(--t), box-shadow var(--t);
+}
+.plan-card:hover {
+  transform: translateY(-4px);
+}
+
+.plan-card.popular {
+  border-color: var(--accent);
+  background: linear-gradient(160deg, #181410, #111);
+  box-shadow: 0 0 60px rgba(212,168,67,.12);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #000;
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  padding: 5px 18px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.plan-header {
+  margin-bottom: 28px;
+}
+
+.plan-name {
+  font-family: var(--font-h);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.plan-price {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+.currency {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 10px;
+}
+.amount {
+  font-family: var(--font-h);
+  font-size: 3.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.plan-period {
+  font-size: .72rem;
+  color: var(--gray-d);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-bottom: 14px;
+}
+
+.plan-desc {
+  font-size: .83rem;
+  color: var(--gray);
+  line-height: 1.7;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+.plan-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .83rem;
+  color: var(--gray);
+}
+.check-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+.plan-btn { margin-top: auto; }
+
+.pricing-note {
+  text-align: center;
+  margin-top: 36px;
+  font-size: .82rem;
+  color: var(--gray-d);
+}
+.pricing-note a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 860px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+}
+</style>

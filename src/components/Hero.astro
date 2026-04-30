@@ -1,0 +1,324 @@
+---
+---
+<section class="hero" id="home">
+  <!-- Background decorations -->
+  <div class="hero-bg">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="grid-pattern"></div>
+  </div>
+
+  <!-- Floating shapes -->
+  <div class="shape shape-1"></div>
+  <div class="shape shape-2"></div>
+  <div class="shape shape-3"></div>
+
+  <div class="container hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Premium Auto Detailing
+      </div>
+
+      <h1 class="hero-title">
+        Make Your Car<br />
+        <span class="title-outline">Look Brand</span><br />
+        <span class="title-gold">New Again</span>
+      </h1>
+
+      <p class="hero-desc">
+        Professional detailing services that restore, protect, and transform
+        your vehicle. From a showroom finish to ceramic coating — we treat
+        every car like our own.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-gold">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+          Book Appointment
+        </a>
+        <a href="#services" class="btn btn-outline">View Services</a>
+      </div>
+
+      <div class="hero-trust">
+        <div class="stars">
+          {"★★★★★"}
+        </div>
+        <span>Trusted by <strong>1,200+</strong> car owners</span>
+      </div>
+    </div>
+
+    <!-- Hero visual card -->
+    <div class="hero-visual">
+      <div class="visual-card">
+        <div class="car-icon">
+          <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Car body -->
+            <path d="M20 76 L38 46 Q48 34 64 34 L136 34 Q152 34 162 46 L180 76 L182 88 Q182 96 174 96 L162 96 Q162 104 154 104 L46 104 Q38 104 38 96 L26 96 Q18 96 18 88 Z" fill="#1a1a1a" stroke="#d4a843" stroke-width="1.5"/>
+            <!-- Windows -->
+            <path d="M50 72 L60 50 Q64 42 72 42 L98 42 L98 72 Z" fill="#0e0e0e" stroke="#333" stroke-width="1"/>
+            <path d="M102 42 L128 42 Q136 42 140 50 L150 72 L102 72 Z" fill="#0e0e0e" stroke="#333" stroke-width="1"/>
+            <!-- Wheels -->
+            <circle cx="54" cy="96" r="16" fill="#111" stroke="#d4a843" stroke-width="2"/>
+            <circle cx="54" cy="96" r="7" fill="#d4a843"/>
+            <circle cx="146" cy="96" r="16" fill="#111" stroke="#d4a843" stroke-width="2"/>
+            <circle cx="146" cy="96" r="7" fill="#d4a843"/>
+            <!-- Shine lines -->
+            <line x1="70" y1="40" x2="90" y2="60" stroke="#d4a843" stroke-width="1" stroke-dasharray="3,4" opacity="0.4"/>
+            <line x1="110" y1="38" x2="130" y2="58" stroke="#d4a843" stroke-width="1" stroke-dasharray="3,4" opacity="0.3"/>
+            <!-- Headlight -->
+            <ellipse cx="174" cy="78" rx="6" ry="9" fill="#d4a843" opacity="0.7"/>
+            <ellipse cx="26" cy="78" rx="6" ry="9" fill="#d4a843" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="card-badges">
+          <div class="mini-badge">
+            <span class="mb-icon">✦</span>
+            <div>
+              <p class="mb-val">100%</p>
+              <p class="mb-label">Satisfaction</p>
+            </div>
+          </div>
+          <div class="mini-badge">
+            <span class="mb-icon">◈</span>
+            <div>
+              <p class="mb-val">7 yrs</p>
+              <p class="mb-label">Experience</p>
+            </div>
+          </div>
+        </div>
+        <div class="shine-effect"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <a href="#services" class="scroll-down" aria-label="Scroll down">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+  </a>
+</section>
+
+<style>
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+/* Background */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .5;
+}
+.glow-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(212,168,67,.22) 0%, transparent 70%);
+  bottom: -100px; left: -150px;
+  animation: glow-pulse 5s ease-in-out infinite;
+}
+.glow-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(212,168,67,.1) 0%, transparent 70%);
+  top: 10%; right: 5%;
+  animation: glow-pulse 7s ease-in-out infinite reverse;
+}
+
+@keyframes glow-pulse {
+  0%,100% { opacity: .4; }
+  50%      { opacity: .7; }
+}
+
+.grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Floating shapes */
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--border-a);
+  pointer-events: none;
+}
+.shape-1 { width: 300px; height: 300px; top: 15%;  right: 8%;  animation: spin-slow 30s linear infinite; }
+.shape-2 { width: 160px; height: 160px; top: 60%;  right: 18%; animation: spin-slow 20s linear infinite reverse; opacity: .5; }
+.shape-3 { width:  80px; height:  80px; top: 25%;  right: 25%; border-color: rgba(212,168,67,.35); animation: float 4s ease-in-out infinite; }
+
+/* Hero content */
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212,168,67,.1);
+  border: 1px solid var(--border-a);
+  border-radius: 100px;
+  padding: 7px 16px;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.badge-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .5; transform: scale(.8); }
+}
+
+.hero-title {
+  font-size: clamp(3rem, 6vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: .01em;
+  margin-bottom: 22px;
+}
+.title-outline {
+  -webkit-text-stroke: 1.5px rgba(255,255,255,.35);
+  color: transparent;
+}
+.title-gold { color: var(--accent); }
+
+.hero-desc {
+  color: var(--gray);
+  font-size: .97rem;
+  max-width: 440px;
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: .82rem;
+  color: var(--gray);
+}
+.stars { color: var(--accent); letter-spacing: 2px; font-size: .9rem; }
+.hero-trust strong { color: var(--white); }
+
+/* Visual card */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.visual-card {
+  position: relative;
+  background: linear-gradient(145deg, #161616, #0e0e0e);
+  border: 1px solid var(--border-a);
+  border-radius: 24px;
+  padding: 40px 36px 32px;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+  animation: float 5s ease-in-out infinite;
+}
+.visual-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.car-icon { margin-bottom: 24px; }
+.car-icon svg { width: 100%; }
+
+.card-badges {
+  display: flex;
+  gap: 14px;
+}
+.mini-badge {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(212,168,67,.07);
+  border: 1px solid var(--border-a);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.mb-icon { font-size: 1.2rem; color: var(--accent); flex-shrink: 0; }
+.mb-val  { font-family: var(--font-h); font-size: 1.2rem; font-weight: 700; color: var(--white); }
+.mb-label { font-size: .68rem; color: var(--gray); text-transform: uppercase; letter-spacing: .08em; }
+
+.shine-effect {
+  position: absolute;
+  top: -40%; left: -40%;
+  width: 60%; height: 180%;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,.03), transparent);
+  transform: skewX(-15deg);
+}
+
+/* Scroll indicator */
+.scroll-down {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 38px; height: 38px;
+  border: 1px solid var(--border-a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  animation: bob 2s ease-in-out infinite;
+  transition: background var(--t);
+}
+.scroll-down:hover { background: var(--accent-glow); }
+@keyframes bob {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(5px); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  .hero-desc { max-width: 100%; margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-trust { justify-content: center; }
+  .hero-visual { display: none; }
+  .shape { display: none; }
+}
+</style>

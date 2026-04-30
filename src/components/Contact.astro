@@ -1,0 +1,289 @@
+---
+const info = [
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>`,
+    label: 'Phone',
+    value: '+1 (646) 886-5877',
+    link: 'tel:+16468865877',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+    label: 'Email',
+    value: 'debibi53@gmail.com',
+    link: 'mailto:debibi53@gmail.com',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+    label: 'Location',
+    value: '145 S April St, Los Angeles, CA',
+    link: '#',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    label: 'Hours',
+    value: 'Mon–Sat: 8am–6pm',
+    link: null,
+  },
+];
+
+const services = ['Exterior Detailing', 'Interior Cleaning', 'Paint Correction', 'Ceramic Coating', 'Basic Wash', 'Ultimate Package'];
+---
+
+<section class="contact-section" id="contact">
+  <!-- Decorative top glow -->
+  <div class="contact-glow"></div>
+
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Left: Info -->
+      <div class="contact-info reveal">
+        <p class="tag">Get in Touch</p>
+        <h2 class="section-title">Ready to <span class="accent">Transform</span><br />Your Car?</h2>
+        <p class="section-desc" style="margin-bottom:36px">
+          Book your appointment online or give us a call. We'll match you with the
+          right package and get your car looking its absolute best.
+        </p>
+
+        <div class="info-list">
+          {info.map((item) => (
+            <div class="info-item">
+              <div class="info-icon" set:html={item.icon} />
+              <div>
+                <p class="info-label">{item.label}</p>
+                {item.link
+                  ? <a href={item.link} class="info-value">{item.value}</a>
+                  : <p class="info-value">{item.value}</p>
+                }
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="contact-form-wrap reveal d2">
+        <div class="form-card">
+          <h3 class="form-title">Book Your Appointment</h3>
+          <p class="form-subtitle">We'll confirm within 24 hours.</p>
+
+          <form class="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="John Smith" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@email.com" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
+              </div>
+              <div class="form-group">
+                <label for="car">Car Model</label>
+                <input type="text" id="car" name="car" placeholder="e.g. BMW M3 2022" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Interested In</label>
+              <select id="service" name="service">
+                <option value="">Select a service…</option>
+                {services.map((s) => <option value={s}>{s}</option>)}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Additional Notes</label>
+              <textarea id="message" name="message" rows="3" placeholder="Anything specific you'd like us to know?"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold submit-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Send Request
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.contact-section {
+  padding: 110px 0;
+  background: var(--bg-2);
+  position: relative;
+  overflow: hidden;
+}
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-a), transparent);
+}
+
+.contact-glow {
+  position: absolute;
+  bottom: -100px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(212,168,67,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Info side */
+.contact-info { padding-top: 10px; }
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.info-icon {
+  width: 44px; height: 44px;
+  background: rgba(212,168,67,.08);
+  border: 1px solid var(--border-a);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.info-icon svg { width: 18px; height: 18px; }
+
+.info-label {
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--gray-d);
+  margin-bottom: 3px;
+}
+.info-value {
+  font-size: .9rem;
+  color: var(--white);
+  font-weight: 500;
+  transition: color var(--t);
+}
+a.info-value:hover { color: var(--accent); }
+
+/* Form */
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 32px;
+}
+.form-card::before {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-d));
+  border-radius: 2px;
+  margin-bottom: 28px;
+}
+
+.form-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  margin-bottom: 6px;
+}
+.form-subtitle {
+  font-size: .82rem;
+  color: var(--gray);
+  margin-bottom: 28px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+label {
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--gray);
+}
+
+input, select, textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: var(--font-b);
+  font-size: .87rem;
+  color: var(--white);
+  outline: none;
+  transition: border-color var(--t), box-shadow var(--t);
+  width: 100%;
+  resize: none;
+}
+input::placeholder, textarea::placeholder { color: var(--gray-d); }
+select option { background: #111; }
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.submit-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 15px;
+  font-size: .82rem;
+}
+
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+}
+@media (max-width: 520px) {
+  .form-row { grid-template-columns: 1fr; }
+  .form-card { padding: 24px 20px; }
+}
+</style>
+
+<script>
+  document.querySelector('.contact-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.currentTarget as HTMLFormElement;
+    const submit = btn.querySelector('.submit-btn') as HTMLButtonElement;
+    submit.textContent = '✓ Request Sent!';
+    submit.style.background = '#1a7a3c';
+    submit.disabled = true;
+  });
+</script>

@@ -1,0 +1,212 @@
+---
+/* Replace the gradient blocks below with your own <img> tags pointing to real before/after photos */
+const items = [
+  { label: 'Exterior Restoration',  before: '#1a1208', after: '#3d280a' },
+  { label: 'Interior Deep Clean',   before: '#0e1218', after: '#1a2a3a' },
+  { label: 'Paint Correction',      before: '#140a1a', after: '#2a1040' },
+  { label: 'Ceramic Coat Finish',   before: '#0a1410', after: '#1a3020' },
+  { label: 'Wheel Restoration',     before: '#181010', after: '#3a2010' },
+  { label: 'Engine Bay Detail',     before: '#101018', after: '#20203a' },
+];
+---
+
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="tag">Our Work</p>
+      <h2 class="section-title">Before & <span class="accent">After</span></h2>
+      <p class="section-desc">
+        Results speak louder than words. Every car that leaves our shop is a reflection of our craft.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      {items.map((item, i) => (
+        <div class={`gallery-item reveal d${(i % 4) + 1}`}>
+          <div class="before-after">
+            <div class="ba-side before" style={`background: linear-gradient(135deg, ${item.before} 0%, #0a0a0a 100%)`}>
+              <span class="ba-label">Before</span>
+              <div class="ba-shimmer"></div>
+            </div>
+            <div class="ba-divider">
+              <div class="divider-line"></div>
+              <div class="divider-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/><path d="M15 18l6-6-6-6" opacity=".4"/></svg>
+              </div>
+            </div>
+            <div class="ba-side after" style={`background: linear-gradient(135deg, ${item.after} 0%, #0f0f0f 100%)`}>
+              <span class="ba-label after-label">After</span>
+              <div class="ba-shine"></div>
+            </div>
+          </div>
+          <p class="item-label">{item.label}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="gallery-cta reveal">
+      <p>See more transformations on our social media</p>
+      <div class="social-links">
+        <a href="#" class="social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a href="#" class="social-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          Facebook
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.gallery-section {
+  padding: 110px 0;
+  background: var(--bg-2);
+  position: relative;
+}
+.gallery-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-a), transparent);
+}
+
+.section-head { margin-bottom: 56px; }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 48px;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: default;
+}
+
+.before-after {
+  display: flex;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: border-color var(--t), transform var(--t);
+  position: relative;
+}
+.gallery-item:hover .before-after {
+  border-color: var(--border-a);
+  transform: scale(1.02);
+}
+
+.ba-side {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 12px;
+}
+
+.ba-label {
+  font-size: .65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.5);
+  background: rgba(0,0,0,.5);
+  padding: 3px 8px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+.after-label { color: var(--accent); }
+
+.ba-shimmer {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 20px,
+    rgba(255,255,255,.02) 20px,
+    rgba(255,255,255,.02) 40px
+  );
+}
+
+.ba-shine {
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 60%; height: 200%;
+  background: linear-gradient(105deg, transparent, rgba(212,168,67,.08), transparent);
+  transform: skewX(-15deg);
+}
+
+.ba-divider {
+  width: 2px;
+  background: var(--border-a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.divider-icon {
+  width: 26px; height: 26px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.divider-icon svg { width: 12px; height: 12px; }
+
+.item-label {
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--gray);
+  text-align: center;
+  letter-spacing: .04em;
+}
+
+/* CTA */
+.gallery-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+}
+.gallery-cta p { font-size: .88rem; color: var(--gray); }
+
+.social-links { display: flex; gap: 12px; }
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--gray);
+  transition: all var(--t);
+}
+.social-btn svg { width: 16px; height: 16px; }
+.social-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+@media (max-width: 860px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+</style>

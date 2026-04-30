@@ -1,0 +1,93 @@
+---
+const stats = [
+  { value: '1,200+', label: 'Cars Detailed',       icon: '🚗' },
+  { value: '98%',    label: 'Satisfaction Rate',   icon: '⭐' },
+  { value: '7+',     label: 'Years Experience',    icon: '🏆' },
+  { value: '50+',    label: 'Five-Star Reviews',   icon: '✦'  },
+];
+---
+
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      {stats.map((s, i) => (
+        <div class={`stat-item reveal d${i + 1}`}>
+          <span class="stat-icon">{s.icon}</span>
+          <p class="stat-value">{s.value}</p>
+          <p class="stat-label">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.stats-section {
+  padding: 70px 0;
+  background: linear-gradient(180deg, #0d0d0d 0%, #080808 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.stats-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 700px; height: 200px;
+  background: radial-gradient(ellipse, rgba(212,168,67,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.stat-item {
+  background: var(--bg-card);
+  padding: 44px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--t);
+}
+.stat-item:hover { background: var(--bg-card-h); }
+
+.stat-icon {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-family: var(--font-h);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: .01em;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: .77rem;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 380px) {
+  .stats-grid { grid-template-columns: 1fr; }
+}
+</style>

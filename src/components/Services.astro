@@ -1,0 +1,165 @@
+---
+const services = [
+  {
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4C24 4 14 16 14 26a10 10 0 0020 0C34 16 24 4 24 4z"/><path d="M18 30c0 3.3 2.7 6 6 6"/><path d="M8 40h32"/></svg>`,
+    title: 'Exterior Detailing',
+    desc: 'Hand wash, clay bar treatment, iron decontamination, and a rich carnauba wax finish that makes your paint pop.',
+    features: ['Hand wash & dry', 'Clay bar treatment', 'Paint decontamination', 'Carnauba wax'],
+  },
+  {
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="14" width="40" height="26" rx="4"/><path d="M4 22h40"/><path d="M12 14V10a4 4 0 018 0v4M28 14V10a4 4 0 018 0v4"/><circle cx="16" cy="31" r="3"/><circle cx="32" cy="31" r="3"/></svg>`,
+    title: 'Interior Cleaning',
+    desc: 'Deep vacuuming, steam cleaning, leather conditioning, and odor elimination for a cabin that feels brand new.',
+    features: ['Deep vacuuming', 'Steam sanitization', 'Leather treatment', 'Odor elimination'],
+  },
+  {
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M24 6v6M24 36v6M6 24h6M36 24h6"/><path d="M12.1 12.1l4.2 4.2M31.7 31.7l4.2 4.2M35.9 12.1l-4.2 4.2M16.3 31.7l-4.2 4.2"/></svg>`,
+    title: 'Paint Correction',
+    desc: 'Multi-stage machine polishing to permanently remove swirl marks, scratches, and oxidation — restoring true clarity.',
+    features: ['Swirl mark removal', 'Scratch correction', 'Machine polishing', 'Gloss enhancement'],
+  },
+  {
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4l4.5 9 9.9 1.4-7.2 7 1.7 9.9L24 27.3l-8.9 4.7 1.7-9.9-7.2-7 9.9-1.4z"/><path d="M24 27v17"/><path d="M16 36l8 4 8-4"/></svg>`,
+    title: 'Ceramic Coating',
+    desc: 'Nano-ceramic protection that bonds to your paint, repelling water, UV rays, and contaminants for years.',
+    features: ['9H hardness coat', 'UV & chemical resistance', 'Hydrophobic surface', '2-year warranty'],
+  },
+];
+---
+
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="tag">What We Offer</p>
+      <h2 class="section-title">Services That <span class="accent">Deliver Results</span></h2>
+      <p class="section-desc">
+        Every vehicle gets our full attention. We use professional-grade products
+        and proven techniques to make your car look and feel exceptional.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((s, i) => (
+        <article class={`service-card reveal d${i + 1}`}>
+          <div class="card-icon" set:html={s.icon} />
+          <h3 class="card-title">{s.title}</h3>
+          <p class="card-desc">{s.desc}</p>
+          <ul class="card-features">
+            {s.features.map((f) => (
+              <li>
+                <svg class="check" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#d4a843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="#contact" class="card-cta">
+            Get a Quote
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.services-section {
+  padding: 110px 0;
+  background: var(--bg-2);
+  position: relative;
+}
+.services-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-a), transparent);
+}
+
+.section-head {
+  margin-bottom: 60px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: border-color var(--t), transform var(--t), box-shadow var(--t);
+  cursor: default;
+}
+.service-card:hover {
+  border-color: var(--border-a);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.4), 0 0 0 1px var(--border-a);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.card-icon svg { width: 100%; height: 100%; }
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+
+.card-desc {
+  font-size: .84rem;
+  color: var(--gray);
+  line-height: 1.75;
+  margin-bottom: 22px;
+}
+
+.card-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 28px;
+}
+.card-features li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .8rem;
+  color: var(--gray);
+}
+.check { width: 16px; height: 16px; flex-shrink: 0; }
+
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: auto;
+  transition: gap var(--t);
+}
+.card-cta:hover { gap: 10px; }
+
+@media (max-width: 1080px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .services-grid { grid-template-columns: 1fr; }
+}
+</style>
