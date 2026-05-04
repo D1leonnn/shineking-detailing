@@ -1,6 +1,6 @@
 # PlatinumDetailConcepts
 
-Landing page for **PlatinumDetailConcepts**, a premium auto detailing business based in Los Angeles, CA. Built with [Astro](https://astro.build) — outputs a fully static site with zero client-side JavaScript frameworks.
+Landing page for **PlatinumDetailConcepts**, a premium auto detailing business based in Los Angeles, CA. Built with [Astro](https://astro.build) and includes an AI receptionist powered by [Groq](https://groq.com) (Llama 3.3).
 
 ## Live Sections
 
@@ -11,14 +11,16 @@ Landing page for **PlatinumDetailConcepts**, a premium auto detailing business b
 - **Gallery** — Before & after showcase
 - **Testimonials** — Customer reviews
 - **Contact** — Booking form with business info
+- **AI Receptionist** — Floating chat widget that answers questions about services, pricing, and bookings
 
 ## Tech Stack
 
 | Tool | Purpose |
 |---|---|
-| [Astro 4](https://astro.build) | Static site framework |
+| [Astro](https://astro.build) | Site framework (SSR + static) |
+| [Groq SDK](https://console.groq.com) | AI receptionist (Llama 3.3 70B, free tier) |
 | Vanilla CSS | Scoped component styles + CSS custom properties |
-| Vanilla JS | Navbar scroll/mobile menu, scroll-reveal animations |
+| Vanilla JS | Navbar scroll, mobile menu, scroll-reveal, chat widget |
 | Google Fonts | Barlow Condensed (headings) · Inter (body) |
 
 ## Getting Started
@@ -29,15 +31,26 @@ Landing page for **PlatinumDetailConcepts**, a premium auto detailing business b
 # Install dependencies
 npm install
 
+# Add your Groq API key (get one free at https://console.groq.com)
+echo "GROQ_API_KEY=your_key_here" > .env
+
 # Start dev server → http://localhost:4321
 npm run dev
 
 # Production build → dist/
 npm run build
-
-# Preview production build locally
-npm run preview
 ```
+
+## Deploying to Render (Free)
+
+1. Go to [render.com](https://render.com) and sign in with GitHub
+2. Click **New → Web Service** and select this repo
+3. Set these values:
+   - **Build Command:** `npm run build`
+   - **Start Command:** `node dist/server/entry.mjs`
+   - **Environment:** Node
+4. Under **Environment Variables**, add `GROQ_API_KEY` with your key
+5. Click **Deploy** — Render gives you a public `*.onrender.com` URL
 
 ## Customization
 
@@ -53,10 +66,11 @@ All business content is defined as plain arrays/objects in each component's fron
 | Testimonials | `src/components/Testimonials.astro` — `reviews` array |
 | Stats numbers | `src/components/Stats.astro` — `stats` array |
 | Colors / fonts / tokens | `src/styles/global.css` — `:root` custom properties |
+| AI receptionist system prompt | `src/pages/api/chat.ts` — `SYSTEM_PROMPT` constant |
 
 ## Contact
 
 **PlatinumDetailConcepts**
-- 📍 145 S April St, Los Angeles, CA
-- 📞 +1 (646) 886-5877
-- ✉️ debibi53@gmail.com
+- 145 S April St, Los Angeles, CA
+- +1 (646) 886-5877
+- debibi53@gmail.com
